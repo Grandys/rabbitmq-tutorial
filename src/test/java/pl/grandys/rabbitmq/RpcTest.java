@@ -4,7 +4,8 @@ import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
 import com.rabbitmq.client.DeliverCallback;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -21,11 +22,11 @@ import static com.rabbitmq.client.AMQP.BasicProperties;
  * Code for tutorial 6, RPC
  * Caller creates single callback queue, and sends message to the callee with generated correlation id.
  * Callee receives message from caller, and responds with the message with correlationId to the queue specified in replyTo property.
- * Callee acknowledges message after response is successfully send to the caller. It's at-least-once delivery. 
+ * Callee acknowledges message after response is successfully send to the caller. It's at-least-once delivery.
  */
 class RpcTest {
 
-    final static Logger logger = Logger.getLogger(RpcTest.class);
+    final static Logger logger = LogManager.getLogger(RpcTest.class);
 
     private static final String QUEUE_NAME = "logs-rpc";
     private final ExecutorService executor = Executors.newFixedThreadPool(5);

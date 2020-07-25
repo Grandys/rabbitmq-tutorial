@@ -4,7 +4,8 @@ import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
 import com.rabbitmq.client.DeliverCallback;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -26,7 +27,7 @@ import java.util.concurrent.TimeoutException;
  */
 class TopicExchangeTest {
 
-    final static Logger logger = Logger.getLogger(TopicExchangeTest.class);
+    final static Logger logger = LogManager.getLogger(TopicExchangeTest.class);
 
     private static final String EXCHANGE_NAME = "logs-topic";
     private static final String FIRST_ROUTING_BINDING = "logs.green";
